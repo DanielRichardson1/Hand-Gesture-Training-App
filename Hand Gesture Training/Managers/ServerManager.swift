@@ -7,10 +7,21 @@
 
 import CocoaMQTT
 
+var mqttClient: CocoaMQTT?
 
-let hostName = "192.168.0.X"  // Raspberry Pi's network address
+func connectServer(hostName: String) -> Bool {
+    mqttClient = CocoaMQTT(clientID: "iOS Device", host: hostName, port: 1883)
+    return mqttClient?.connect() ?? false
+}
 
-let mqttClient = CocoaMQTT(clientID: "iOS Device", host: hostName, port: 1883)
+func disconnectServer() {
+    mqttClient?.disconnect()
+}
+
+
+
+
+// Syntax:
 
 // mqttClinet.connect()
 // mqttClinet.disconnect()  // when done

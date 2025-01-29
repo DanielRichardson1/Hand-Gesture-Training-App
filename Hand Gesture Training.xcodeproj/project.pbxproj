@@ -17,22 +17,9 @@
 		F0CCDB35BCE47E7FF05CA77D /* Pods-Hand Gesture Training.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hand Gesture Training.release.xcconfig"; path = "Target Support Files/Pods-Hand Gesture Training/Pods-Hand Gesture Training.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		65139B682D4834FE00D39B6A /* Exceptions for "Hand Gesture Training" folder in "Hand Gesture Training" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Hand-Gesture-Training-Info.plist",
-			);
-			target = 65139B1E2D4822AE00D39B6A /* Hand Gesture Training */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		65139B212D4822AE00D39B6A /* Hand Gesture Training */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				65139B682D4834FE00D39B6A /* Exceptions for "Hand Gesture Training" folder in "Hand Gesture Training" target */,
-			);
 			path = "Hand Gesture Training";
 			sourceTree = "<group>";
 		};

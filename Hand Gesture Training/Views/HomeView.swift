@@ -8,21 +8,75 @@
 import SwiftUI
 
 struct HomeView: View {
-    var body: some View {
-        VStack{
-            
-            RectangleButton(title: "Start Calibration", textColor: .gbWhite, buttonColor1: .gbPurple, buttonColor2: .gbPurpleDark)
-                .padding()
-                .padding(.bottom, 20)
-            
-            RectangleButton(title: "Connect to Device", textColor: .gbWhite, buttonColor1: .gbLightBlue, buttonColor2: .gbBlue, action: {})
-                .padding()
-            
-        }
-        
-        
+    
+    @State var hostNameInput = ""
+    @State var connected = false
+    
+    func connectToServer() {
+        let connectionSuccessful = connectServer(hostName: hostNameInput)
+        connected = connectionSuccessful
     }
-}
+    
+    func toggleConnection() {
+        if connected {
+            disconnectServer()
+            connected = false
+        } else {
+            connectToServer()
+        }
+    }
+    
+    var body: some View {
+        NavigationView {
+            VStack{
+                
+                Spacer()
+                
+                Text("🦾")
+                    .font(.system(size: 120, weight: .bold))
+                
+                Text("EMGenius Inc.")
+                    .font(.title2)
+                Text("Hand Gesture Training")
+                    .font(.headline)
+                
+                Spacer()
+                
+                TextField("", text: $hostNameInput)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(
+                        ZStack {
+                            Capsule(style: .circular)
+                                .fill(.gbGray2)
+                                .shadow(radius: 2)
+                            if hostNameInput.count == 0 {
+                                HStack {
+                                    Spacer()
+                                    Text("host name here...")
+                                        .font(.medium)
+                                        .fontWeight(.medium)
+                                        .foregroundColor(.white)
+                                        .padding(.horizontal, 20)
+                                    Spacer()
+                                }
+                            }
+                        }
+                    )
+                    .onSubmit(connectToServer)
+                    .padding(.horizontal)
+                
+                
+                RectangleButton(title: connected ? "Disconnect" : "Connect", textColor: .white, buttonColor1: connected ? .gbRed : .gbLightBlue, buttonColor2: connected ? .gbRedDark : .gbBlue, action: toggleConnection)
+                    .padding()
+                Spacer()
+                    RectangleButton(title: "Calibrate", textColor: .white, buttonColor1: connected ? .gbLightGreen : .gbGray2, buttonColor2: connected ? .gbGreen : .gbGray1)
+                        .disabled(!connected)
+                }
+            }
+        }
+    }
+
 
 #Preview {
     HomeView()
