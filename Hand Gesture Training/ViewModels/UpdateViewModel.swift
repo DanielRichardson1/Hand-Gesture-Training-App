@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 class UpdaterViewModel: ObservableObject{
+    
     @Published var index: Int = 20
     @Published var gestureIndex: Int = 0
     @Published var isCollectingData: Bool = false
@@ -20,7 +21,6 @@ class UpdaterViewModel: ObservableObject{
         isCollectingData = false
         isResting = true
         index = 20
-        startTimer()
     }
     
     func startDataCollection() {
@@ -36,7 +36,7 @@ class UpdaterViewModel: ObservableObject{
         timer = nil
     }
     
-    private func startTimer() {
+    func startTimer() {
         stopTimer()
         
         timer = Timer.publish(every: 1.0, on: .main, in: .common)

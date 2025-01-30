@@ -39,7 +39,7 @@ struct CalibrationView: View {
                     if updaterViewModel.isCollectingData {
                         updaterViewModel.stopDataCollection()
                     } else {
-                        updaterViewModel.startRestingPosition()
+                        updaterViewModel.startTimer()
                     }
                 }) {
                     Text(updaterViewModel.isCollectingData ? "Stop" : "Start")
