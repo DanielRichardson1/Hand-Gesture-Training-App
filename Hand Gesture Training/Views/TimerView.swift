@@ -5,6 +5,8 @@
 //  Created by Daniel Richardson on 1/30/25.
 //
 
+// For testing our timer model/viewModel
+
 import SwiftUI
 
 struct TimerView: View {
@@ -31,6 +33,12 @@ struct TimerView: View {
                     timerViewModel.resetTimer()
                 }
                 .padding()
+                
+                Button("Set") {
+                    timerViewModel.setTime(seconds: 120)
+                }
+                .padding()
+                
             }
         }
     }

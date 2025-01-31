@@ -34,6 +34,7 @@ class TimerModel {
     }
     
     func setTime(seconds: TimeInterval) {
+        stopTimer()
         currentTime = seconds
         currentTimeSubject.send(currentTime)
     }

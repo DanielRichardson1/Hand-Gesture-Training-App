@@ -3,20 +3,21 @@ import SwiftUI
 
 struct CalibrationView: View {
     
-    @StateObject var updaterViewModel = UpdaterViewModel()
+    @State var isCollectingData = false
+    @State var gestureText = "ayo"
     
     var body: some View {
         VStack {
             
             Spacer()
             
-            Text(updaterViewModel.isCollectingData ? "Data Collection" : "Resting Position")
+            Text(isCollectingData ? "Data Collection" : "Resting Position")
                 .font(.title)
                 .bold()
                             
             
             
-            Text(updaterViewModel.isCollectingData ? "Please follow the gestures: \(updaterViewModel.gestureText())" : "Please keep your hand in a resting position for 20 seconds")
+            Text(isCollectingData ? "Please follow the gestures: \(gestureText)" : "Please keep your hand in a resting position for 20 seconds")
                 .font(.subheadline)
                 .bold()
                 .multilineTextAlignment(.center)
@@ -24,34 +25,27 @@ struct CalibrationView: View {
             
             Spacer()
             
-            Text(updaterViewModel.isCollectingData ? "\(updaterViewModel.gestureEmoji())" : "✋")
+            Text("✋")
                 .font(.system(size: 100, weight: .bold))
             
             Spacer()
             
-            Text("Time remanining: \(updaterViewModel.index)")
+            Text("Time remanining: ")
                 .font(.title3)
                 .bold()
             
             Spacer()
             
             Button(action: {
-                    if updaterViewModel.isCollectingData {
-                        updaterViewModel.stopDataCollection()
-                    } else {
-                        updaterViewModel.startTimer()
-                    }
+                
                 }) {
-                    Text(updaterViewModel.isCollectingData ? "Stop" : "Start")
+                    Text(isCollectingData ? "Stop" : "Start")
                         .font(.title3)
                         .bold()
                 }
                         
                 Spacer()
             
-        }
-        .onAppear {
-            updaterViewModel.startRestingPosition()
         }
     }
 }
